@@ -7,5 +7,5 @@ services:
     srv1:
         override: replace
         summary: Service summary
-        command: while true; do echo "$(date) tuna"; sleep 2; done
+        command: ping google.com
         startup: disabled
