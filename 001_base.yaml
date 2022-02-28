@@ -1,0 +1,11 @@
+summary: Simple layer
+
+description: |
+    A better description for a simple layer.
+
+services:
+    srv1:
+        override: replace
+        summary: Service summary
+        command: while true; do echo "$(date) tuna"; sleep 2; done
+        startup: disabled
