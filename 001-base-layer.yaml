@@ -1,11 +1,25 @@
-summary: Simple layer
+summary: ROS Layer
 
 description: |
-    A better description for a simple layer.
+  A description of ROS layer.
 
 services:
-    srv1:
-        override: replace
-        summary: Service summary
-        command: ping google.com
-        startup: disabled
+  dependencies:
+    override: replace
+    summary: Installs dependencies of robot
+    command: cd $WORKSPACE && rosdep install --from-paths src --ignore-src -r -y
+    startup: enabled
+    before:
+    - build
+    environment:
+      VAR1: val1
+      VAR2: val2
+      VAR3: val3
+
+  build:
+    override: replace
+    summary: Builds robot codes
+    startup: enabled
+    command: cat
+    requires:
+    - dependencies
