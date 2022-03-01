@@ -32,6 +32,6 @@ services:
     summary: Builds robot codes
     startup: disabled
     command: /bin/bash -c "cd $WORKSPACE && colcon build"
-    requires:
+    after:
     - dependencies
     on-failure: ignore
