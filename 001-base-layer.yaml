@@ -18,18 +18,18 @@ services:
     override: replace
     summary: Installs dependencies of robot
     command: /bin/bash -c "cd $WORKSPACE && rosdep install --from-paths src --ignore-src -r -y"
-    startup: disabled
+    startup: enabled
     environment:
       VAR1: val1
       VAR2: val2
       VAR3: val3
-    on-failure: shutdown
+    on-failure: ignore
 
   build:
     override: replace
     summary: Builds robot codes
-    startup: disabled
+    startup: enabled
     command: /bin/bash -c "cd $WORKSPACE && colcon build"
     after:
     - dependencies
-    on-failure: shutdown
+    on-failure: ignore
