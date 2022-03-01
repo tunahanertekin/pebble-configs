@@ -7,7 +7,7 @@ services:
   test:
     override: replace
     summary: test
-    command: /bin/bash -c "printenv > /root/env.txt; while [ true ]; do echo $WORKSPACE; sleep 1; done"
+    command: /bin/bash -c "source ~/.bashrc; printenv; while [ true ]; do echo $WORKSPACE; sleep 1; done"
     startup: disabled
     environment:
       VAR1: val1
@@ -17,8 +17,8 @@ services:
   dependencies:
     override: replace
     summary: Installs dependencies of robot
-    command: /bin/bash -c "cd $WORKSPACE && rosdep install --from-paths src --ignore-src -r -y"
-    startup: disabled
+    command: /bin/bash -c "cd $WORKSPACE && rosdep install --from-paths src --ignore-src -r -y && pebble start build"
+    startup: enabled
     environment:
       VAR1: val1
       VAR2: val2
