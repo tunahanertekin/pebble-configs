@@ -15,7 +15,6 @@ services:
       VAR1: val1
       VAR2: val2
       VAR3: val3
-    working-dir: /root/ws
 
   build:
     override: replace
