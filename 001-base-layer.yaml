@@ -7,7 +7,7 @@ services:
   dependencies:
     override: replace
     summary: Installs dependencies of robot
-    command: cd $WORKSPACE && rosdep install --from-paths src --ignore-src -r -y
+    command: rosdep install --from-paths src --ignore-src -r -y
     startup: disabled
     before:
     - build
@@ -15,6 +15,7 @@ services:
       VAR1: val1
       VAR2: val2
       VAR3: val3
+    working-dir: /root/ws
 
   build:
     override: replace
