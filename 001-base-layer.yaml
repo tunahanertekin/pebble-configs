@@ -17,7 +17,7 @@ services:
   dependencies:
     override: replace
     summary: Installs dependencies of robot
-    command: /bin/bash -c "cd $WORKSPACE && rosdep install --from-paths src --ignore-src -r -y"
+    command: /bin/bash -c "cd $WORKSPACE && rosdep install --from-paths src --ignore-src -r -y && pebble start build"
     startup: enabled
     environment:
       VAR1: val1
@@ -28,7 +28,7 @@ services:
   build:
     override: replace
     summary: Builds robot codes
-    startup: enabled
+    startup: disabled
     command: /bin/bash -c "cd $WORKSPACE && colcon build"
     after:
     - dependencies
