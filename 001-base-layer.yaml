@@ -7,7 +7,7 @@ services:
   test:
     override: replace
     summary: test
-    command: /bin/bash -c "source ~/.bashrc; printenv > /root/env.txt; while [ true ]; do echo $WORKSPACE; sleep 1; done"
+    command: /bin/bash -c "source ~/.bashrc; printenv > /root/env.txt; cd $WORKSPACE && touch me.txt; while [ true ]; do echo $WORKSPACE; sleep 1; done"
     startup: disabled
     environment:
       VAR1: val1
