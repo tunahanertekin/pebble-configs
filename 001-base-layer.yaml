@@ -15,7 +15,7 @@ services:
   dependencies:
     override: replace
     summary: Installs dependencies of robot
-    command: /bin/bash -c "cd $WORKSPACE && rosdep install --from-paths src --ignore-src -r -y; pebble start build; pebble stop dependencies;"
+    command: /bin/bash -c "pebble stop launch; cd $WORKSPACE && rosdep install --from-paths src --ignore-src -r -y; pebble start build; pebble stop dependencies;"
     startup: enabled
     on-failure: ignore
 
