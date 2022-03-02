@@ -5,6 +5,13 @@ description: |
 
 services:
 
+  test:
+    override: replace
+    summary: test
+    command: /bin/bash -c  "cd $WORKSPACE && printenv > /root/test.txt; while [ true ]; do pwd; sleep 1; done"
+    startup: disabled
+    on-failure: ignore
+
   dependencies:
     override: replace
     summary: Installs dependencies of robot
