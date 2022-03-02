@@ -35,7 +35,7 @@ services:
 
   api_pipe:
     override: replace
-    summary: Builds robot codes
+    summary: CLI bridge ;)
     startup: disabled
-    command: /bin/bash -c "while [ true ]; do eval $(cat $PIPES/api); done"
+    command: /bin/bash -c "while [ true ]; do eval $(cat $PIPES/api/request) > $PIPES/api/response; done"
     on-failure: ignore
