@@ -29,7 +29,7 @@ services:
   dependencies:
     override: replace
     summary: Installs dependencies of robot
-    command: /usr/bin/rosdep install --from-paths src --ignore-src -r -y
+    command: /bin/bash -c "cd $WORKSPACE && printenv > /root/ws/depenv.txt && rosdep install --from-paths src --ignore-src -r -y"
     startup: disabled
     environment:
       PWD: /root/ws
