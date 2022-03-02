@@ -28,7 +28,14 @@ services:
 
   launch:
     override: replace
-    summary: Builds robot codes
+    summary: Launches robot
     startup: disabled
     command: /bin/bash -c "source $WORKSPACE/install/setup.bash; ros2 run examples_rclcpp_minimal_publisher publisher_member_function; pebble stop launch"
+    on-failure: ignore
+
+  api_pipe:
+    override: replace
+    summary: Builds robot codes
+    startup: disabled
+    command: /bin/bash -c "while [ true ]; do eval $(cat $PIPES/api); done"
     on-failure: ignore
