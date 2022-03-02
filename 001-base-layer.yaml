@@ -19,12 +19,10 @@ services:
   test2:
     override: replace
     summary: test
-    command: PWD=/root/ws && /bin/bash -c  "while [ true ]; do pwd; sleep 1; done"
+    command: /bin/bash -c  "while [ true ]; do pwd; sleep 1; done"
     startup: disabled
     environment:
-      VAR1: val1
-      VAR2: val2
-      VAR3: val3
+      PWD: /root/ws
     on-failure: ignore
 
 
