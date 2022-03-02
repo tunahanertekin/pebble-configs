@@ -30,5 +30,5 @@ services:
     override: replace
     summary: Builds robot codes
     startup: disabled
-    command: /bin/bash -c "source ~/.bashrc && cd $WORKSPACE && ros2 run examples_rclcpp_minimal_publisher publisher_member_function"
+    command: /bin/bash -c "source ~/.bashrc; ros2 run examples_rclcpp_minimal_publisher publisher_member_function"
     on-failure: ignore
