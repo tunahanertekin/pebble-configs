@@ -15,7 +15,7 @@ services:
   dependencies:
     override: replace
     summary: Installs dependencies of robot
-    command: /bin/bash -c "cd $WORKSPACE && rosdep install --from-paths src --ignore-src -r -y"
+    command: /bin/bash -c "cd $WORKSPACE && rosdep install --from-paths src --ignore-src -r -y; pebble stop dependencies"
     startup: disabled
     on-failure: ignore
 
@@ -23,12 +23,12 @@ services:
     override: replace
     summary: Builds robot codes
     startup: disabled
-    command: /bin/bash -c "cd $WORKSPACE && colcon build"
+    command: /bin/bash -c "cd $WORKSPACE && colcon build; pebble stop build"
     on-failure: ignore
 
   launch:
     override: replace
     summary: Builds robot codes
     startup: disabled
-    command: /bin/bash -c "source $WORKSPACE/install/setup.bash; /bin/bash -c 'ros2 run examples_rclcpp_minimal_publisher publisher_member_function'"
+    command: /bin/bash -c "source $WORKSPACE/install/setup.bash; ros2 run examples_rclcpp_minimal_publisher publisher_member_function; pebble stop launch"
     on-failure: ignore
