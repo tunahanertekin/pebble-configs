@@ -14,6 +14,21 @@ services:
       VAR2: val2
       VAR3: val3
     on-failure: ignore
+
+
+  test2:
+    override: replace
+    summary: test
+    command: /bin/bash -c "while [ true ]; do pwd; sleep 2; done"
+    startup: disabled
+    environment:
+      VAR1: val1
+      VAR2: val2
+      VAR3: val3
+    on-failure: ignore
+    working_dir: /root/ws
+
+
   dependencies:
     override: replace
     summary: Installs dependencies of robot
