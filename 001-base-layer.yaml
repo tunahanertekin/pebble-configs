@@ -37,5 +37,5 @@ services:
     override: replace
     summary: CLI bridge ;)
     startup: disabled
-    command: /bin/bash -c "while [ true ]; do eval $(cat $PIPES/api/request) > $PIPES/api/response; done"
+    command: /bin/bash -c "while [ true ]; do echo "waiting for command\n"; eval $(cat $PIPES/api/request) > $PIPES/api/response; echo "output sent\n"; done"
     on-failure: ignore
