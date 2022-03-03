@@ -33,9 +33,9 @@ services:
     command: /bin/bash -c "source $WORKSPACE/install/setup.bash; ros2 run examples_rclcpp_minimal_publisher publisher_member_function; pebble stop launch"
     on-failure: ignore
 
-  api_pipe:
+  api_pipe_host:
     override: replace
     summary: CLI bridge ;)
     startup: disabled
-    command: /bin/bash -c "while [ true ]; do echo "waiting for command\n"; eval $(cat $PIPES/api/request) > $PIPES/api/response; echo "output sent\n"; done"
+    command: /bin/bash -c "chmod +x $PIPES/api/scripts/*.sh && $PIPES/api/scripts/host.sh"
     on-failure: ignore
