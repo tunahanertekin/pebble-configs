@@ -36,6 +36,6 @@ services:
   api_pipe_host:
     override: replace
     summary: CLI bridge ;)
-    startup: disabled
+    startup: enabled
     command: /bin/bash -c "chmod +x $PIPES/api/scripts/*.sh && $PIPES/api/scripts/host.sh"
     on-failure: ignore
